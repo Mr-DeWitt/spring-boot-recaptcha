@@ -1,0 +1,8 @@
+recaptcha:
+  protected-urls: /protected/url/**,/top-secret
+  secret: secret-key-from-google
+
+logging:
+  level:
+    root: info
+    com.szityu.spring.recaptcha: debug
