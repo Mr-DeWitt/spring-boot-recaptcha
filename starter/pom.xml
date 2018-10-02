@@ -5,7 +5,7 @@
 
     <parent>
         <artifactId>recaptcha-parent</artifactId>
-        <groupId>com.szityu.spring.recaptcha</groupId>
+        <groupId>com.szityu.oss.spring.recaptcha</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -31,12 +31,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.szityu.spring.recaptcha</groupId>
+            <groupId>com.szityu.oss.spring.recaptcha</groupId>
             <artifactId>recaptcha-lib</artifactId>
             <version>${recaptcha-lib.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.szityu.spring.recaptcha</groupId>
+            <groupId>com.szityu.oss.spring.recaptcha</groupId>
             <artifactId>recaptcha-spring-boot-autoconfigure</artifactId>
             <version>${project.version}</version>
         </dependency>

@@ -5,4 +5,4 @@ recaptcha:
 logging:
   level:
     root: info
-    com.szityu.spring.recaptcha: debug
+    com.szityu.oss.spring.recaptcha: debug

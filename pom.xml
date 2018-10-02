@@ -29,7 +29,7 @@
         <tag>HEAD</tag>
     </scm>
 
-    <groupId>com.szityu.spring.recaptcha</groupId>
+    <groupId>com.szityu.oss.spring.recaptcha</groupId>
     <artifactId>recaptcha-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
