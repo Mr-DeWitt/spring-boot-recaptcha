@@ -26,13 +26,13 @@
         <connection>scm:git:https://github.com/Mr-DeWitt/spring-boot-recaptcha.git</connection>
         <developerConnection>scm:git:https://github.com/Mr-DeWitt/spring-boot-recaptcha.git</developerConnection>
         <url>https://github.com/Mr-DeWitt/spring-boot-recaptcha</url>
-        <tag>v1.0.0</tag>
+        <tag>v1.0.1</tag>
     </scm>
 
     <groupId>com.szityu.oss.spring.recaptcha</groupId>
     <artifactId>recaptcha-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <modules>
         <module>lib</module>
@@ -51,8 +51,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <project.version>1.0-SNAPSHOT</project.version>
-        <recaptcha-lib.version>1.0-SNAPSHOT</recaptcha-lib.version>
+        <project.version>1.0.1</project.version>
+        <recaptcha-lib.version>1.0.1</recaptcha-lib.version>
         <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
         <junit.version>4.12</junit.version>
     </properties>
