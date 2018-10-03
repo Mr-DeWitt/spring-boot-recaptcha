@@ -130,4 +130,73 @@ public class RecaptchaAutoConfigurationTest {
                             .hasFieldOrPropertyWithValue("invalidCaptchaCallbackHandler", context.getBean(OwnInvalidCaptchaCallbackHandler.class));
                 });
     }
+
+    @Test
+    public void testWithExcludedProfileIsActive() {
+        this.webContextRunner
+                .withPropertyValues(
+                        "recaptcha.protected-urls=/protected-url/**",
+                        "recaptcha.secret=top-secret",
+                        "recaptcha.excluded-profiles=test",
+                        "spring.profiles.active=dev,test")
+                .run((context) -> assertThat(context).doesNotHaveBean(RecaptchaValidatorFilter.class));
+    }
+
+    @Test
+    public void testWithMultipleExcludedProfilesOneIsActive() {
+        this.webContextRunner
+                .withPropertyValues(
+                        "recaptcha.protected-urls=/protected-url/**",
+                        "recaptcha.secret=top-secret",
+                        "recaptcha.excluded-profiles=test,test2,test3",
+                        "spring.profiles.active=dev,test2")
+                .run((context) -> assertThat(context).doesNotHaveBean(RecaptchaValidatorFilter.class));
+    }
+
+    @Test
+    public void testWithMultipleExcludedProfilesAreActive() {
+        this.webContextRunner
+                .withPropertyValues(
+                        "recaptcha.protected-urls=/protected-url/**",
+                        "recaptcha.secret=top-secret",
+                        "recaptcha.excluded-profiles=test,test2,test3",
+                        "spring.profiles.active=dev,test3,dev2")
+                .run((context) -> assertThat(context).doesNotHaveBean(RecaptchaValidatorFilter.class));
+    }
+
+    @Test
+    public void testWithExcludedProfileIsNotActive() {
+        this.webContextRunner
+                .withPropertyValues(
+                        "recaptcha.protected-urls=/protected-url/**",
+                        "recaptcha.secret=top-secret",
+                        "excluded-profiles=test",
+                        "spring.profiles.active=dev")
+                .run((context) -> {
+                    val autoConfig = context.getBean(RecaptchaAutoConfiguration.class);
+
+                    assertThat(context).hasSingleBean(RecaptchaValidatorFilter.class);
+                    assertThat(context.getBean(RecaptchaValidatorFilter.class))
+                            .isSameAs(autoConfig.recaptchaValidatorFilter(autoConfig.recaptchaConfigProperties(), autoConfig.missingCaptchaCallbackHandler(), autoConfig.validCaptchaCallbackHandler(), autoConfig.invalidCaptchaCallbackHandler()))
+                            .isExactlyInstanceOf(RecaptchaValidatorCallbackFilter.class);
+                });
+    }
+
+    @Test
+    public void testWithMultipleExcludedProfilesAreNotActive() {
+        this.webContextRunner
+                .withPropertyValues(
+                        "recaptcha.protected-urls=/protected-url/**",
+                        "recaptcha.secret=top-secret",
+                        "excluded-profiles=test,test2,test3",
+                        "spring.profiles.active=dev,test4")
+                .run((context) -> {
+                    val autoConfig = context.getBean(RecaptchaAutoConfiguration.class);
+
+                    assertThat(context).hasSingleBean(RecaptchaValidatorFilter.class);
+                    assertThat(context.getBean(RecaptchaValidatorFilter.class))
+                            .isSameAs(autoConfig.recaptchaValidatorFilter(autoConfig.recaptchaConfigProperties(), autoConfig.missingCaptchaCallbackHandler(), autoConfig.validCaptchaCallbackHandler(), autoConfig.invalidCaptchaCallbackHandler()))
+                            .isExactlyInstanceOf(RecaptchaValidatorCallbackFilter.class);
+                });
+    }
 }

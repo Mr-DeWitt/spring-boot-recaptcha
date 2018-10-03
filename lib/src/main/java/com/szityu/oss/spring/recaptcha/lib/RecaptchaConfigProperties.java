@@ -27,4 +27,9 @@ public class RecaptchaConfigProperties {
      * The header name in which the client needs to send the captcha check value.
      */
     String headerName = "g-recaptcha-response";
+    /**
+     * A profile name list. If one of the profiles is active the reCAPTCHA validator filter won't be registered.
+     * This is useful if you don't need reCAPTCHA validation during dev stage or integration testing.
+     */
+    String[] excludedProfiles;
 }

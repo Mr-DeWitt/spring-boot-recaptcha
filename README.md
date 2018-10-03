@@ -31,6 +31,7 @@ At the moment the following properties can be configured:
 * `recaptcha.secret` The secret key obtained from Google's [reCAPTCHA](https://www.google.com/recaptcha) service used for validating user sent captcha values.
 * `recaptcha.protectedUrls` An Ant styled URL list of captcha protected resources separated by commas.
 * `recaptcha.headerName` The header name in which the client needs to send the captcha check value. The default value is `g-recaptcha-response`.
+* `recaptcha.excludedProfiles` A profile name list. If one of the profiles is active the reCAPTCHA validator filter won't be registered. This is useful if you don't need reCAPTCHA validation during dev stage or integration testing.
 
 **Example**
 

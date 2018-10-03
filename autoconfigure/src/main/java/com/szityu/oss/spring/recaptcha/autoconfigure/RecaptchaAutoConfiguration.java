@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguratio
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -24,8 +25,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @Configuration
-@ConditionalOnProperty(name = "recaptcha.protected-urls")
 @ConditionalOnWebApplication
+@Conditional(RecaptchaProfileExclusionCondition.class)
+@ConditionalOnProperty(name = "recaptcha.protected-urls")
 @AutoConfigureAfter(value = WebMvcAutoConfiguration.class)
 @EnableConfigurationProperties
 public class RecaptchaAutoConfiguration {
