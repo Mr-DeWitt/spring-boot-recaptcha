@@ -15,7 +15,7 @@ The starter's autoconfiguration will be triggered if the following requirements 
         <groupId>com.szityu.oss.spring.recaptcha</groupId>
         <artifactId>recaptcha-spring-boot-starter</artifactId>
         <packaging>jar</packaging>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
     ...
 </dependencies>
