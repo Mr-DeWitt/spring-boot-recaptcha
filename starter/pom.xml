@@ -6,7 +6,7 @@
     <parent>
         <artifactId>recaptcha-parent</artifactId>
         <groupId>com.szityu.oss.spring.recaptcha</groupId>
-        <version>1.1.0</version>
+        <version>1.1.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
